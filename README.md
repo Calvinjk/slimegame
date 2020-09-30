@@ -2,4 +2,4 @@
 
 This is the slime game
 
-David Yi was here
+Created by: Calvin Kopitz and David Yi
