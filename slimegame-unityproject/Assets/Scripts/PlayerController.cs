@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour {
     public float jumpForce = 25f;
 
     ///////////////////////////////////
-    [SerializeField]
     bool isJumping = false;
     Rigidbody2D rb;
 
@@ -27,7 +26,7 @@ public class PlayerController : MonoBehaviour {
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
 
         //Wait while the character's y-velocity is positive (the character is going up)
-        while (Input.GetButton("Jump") && rb.velocity.y > 0) {
+        while (Input.GetKey(KeyCode.Space) && rb.velocity.y > 0) {
             yield return null;
         }
 
