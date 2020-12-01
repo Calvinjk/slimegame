@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate() {
-        if (Input.GetButtonDown("Jump") && IsGrounded() && !isJumping) {
+    void Update() {
+        if (Input.GetKey(KeyCode.Space) && IsGrounded() && !isJumping) {
             isJumping = true;
             StartCoroutine(JumpRoutine());
         }
@@ -26,8 +26,7 @@ public class PlayerController : MonoBehaviour {
         rb.velocity = Vector2.zero;
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
 
-        //Wait while the character's y-velocity is positive (the character is going
-        //up)
+        //Wait while the character's y-velocity is positive (the character is going up)
         while (Input.GetButton("Jump") && rb.velocity.y > 0) {
             yield return null;
         }
